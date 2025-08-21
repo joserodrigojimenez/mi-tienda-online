@@ -1,95 +1,118 @@
-[README.md](https://github.com/user-attachments/files/21925917/README.md)
-# App de Gestión de Pedidos Online (Ionic React + Firebase Firestore)
+# 🛒 Order Management App
 
-## Objetivo
-Aplicación híbrida multiplataforma para gestionar productos, carrito de compras y pedidos con conexión a **Firebase Firestore**.
-
----
-
-## 🚀 Características principales
-- Catálogo de productos con nombre, descripción, precio y stock.
-- Carrito de compras con manejo de estado local.
-- Creación de pedidos (CRUD + transacción que descuenta stock).
-- Historial de pedidos por usuario (Auth anónima).
-- Compatible con Android e iOS (Capacitor).
+Aplicación de **Gestión de Pedidos Online** desarrollada como proyecto académico.  
+Permite visualizar un catálogo de productos, añadirlos al carrito, realizar pedidos y consultar el historial.
 
 ---
 
-## 📦 Requisitos
-- Node.js 18+
-- Ionic CLI (`npm i -g @ionic/cli`)
-- Firebase (Firestore + Authentication habilitada en modo anónimo)
-- Android Studio / Xcode (para compilar nativo)
+## 🚀 Tecnologías usadas
+- **Frontend:** React (con Vite/CRA, según tu setup)
+- **Backend / Base de datos remota:** Firebase Firestore
+- **UI / Estilos:** TailwindCSS + Componentes personalizados
+- **Gestión de estado:** Context API / Hooks de React
 
 ---
 
-## ⚙️ Instalación y configuración
-1. Clonar este repositorio
-   ```bash
-   git clone https://github.com/TU_USUARIO/TU_REPO.git
-   cd TU_REPO
-   npm install
-   ```
-2. Configurar Firebase en `src/firebase.ts` con tus credenciales.
-3. Activar **Auth anónima** en Firebase Console.
-4. Definir reglas de seguridad Firestore (archivo `firestore.rules`).
+## ✨ Características principales
+✅ Visualizar lista de productos con imagen, descripción, precio y stock  
+✅ Carrito de compras con manejo de estado local  
+✅ Registro de pedidos en **base de datos remota (Firestore)**  
+✅ Historial de pedidos del usuario  
+✅ Compatible con Android 📱 y iOS 🍏 (via PWA o empaquetado con Capacitor/Ionic)  
+✅ CRUD completo sobre colecciones **Productos** y **Pedidos**  
 
 ---
 
-## 📂 Estructura de datos en Firestore
-- **products**:  
-  ```json
+## 📊 Modelo de Datos
+
+### Colección: `Productos`
+```json
 {
-  "id": 1,
-  "nombre": "Monitor 4K",
-  "descripcion": "Monitor profesional 27 pulgadas con resolución 4K",
-  "precio": 449.99,
-  "categoria": "Electrónicos"
+  "id": "auto-generado",
+  "nombre": "Laptop Gaming Pro",
+  "descripcion": "Laptop de alto rendimiento para gaming y trabajo profesional",
+  "precio": 1299.99,
+  "stock": 15,
+  "categoria": "Electrónicos",
+  "imagen": "url"
 }
-  ```
+```
 
-- **orders**:  
-  ```json
-  {
-    "userId": "UID_DEL_USUARIO",
-    "items": [
-      { "productId": "123", "name": "Café Americano", "price": 12.5, "qty": 2 }
-    ],
-    "status": "pending",
-    "createdAt": "timestamp"
-  }
-  ```
-
----
-
-## ▶️ Scripts útiles
-- `ionic serve` → Modo desarrollo en navegador
-- `ionic build && ionic cap sync` → Prepara app nativa
-- `ionic cap open android` → Abre en Android Studio
-- `ionic cap open ios` → Abre en Xcode
+### Colección: `Pedidos`
+```json
+{
+  "id": "auto-generado",
+  "usuarioId": "UID de Firebase",
+  "productos": [
+    {
+      "productoId": "idProducto",
+      "cantidad": 2
+    }
+  ],
+  "estado": "pendiente",
+  "fecha": "2025-08-21T15:30:00Z"
+}
+```
 
 ---
 
-## 📱 Flujo de la aplicación
-1. El usuario visualiza la lista de productos desde Firestore.
-2. Añade productos al carrito (estado local Context API).
-3. Realiza un pedido → se descuenta el stock en Firestore y se guarda el pedido.
-4. Puede ver su historial de pedidos filtrado por su UID.
+## 📦 Instalación y ejecución
+
+### 1️⃣ Clonar el repositorio
+```bash
+git clone https://github.com/tu-usuario/order-management-app.git
+cd order-management-app
+```
+
+### 2️⃣ Instalar dependencias
+```bash
+npm install
+```
+
+### 3️⃣ Configurar Firebase
+Crea un proyecto en [Firebase Console](https://console.firebase.google.com/) y copia las credenciales.  
+En tu proyecto, crea un archivo `.env` con algo así:
+
+```env
+VITE_FIREBASE_API_KEY=xxxx
+VITE_FIREBASE_AUTH_DOMAIN=xxxx.firebaseapp.com
+VITE_FIREBASE_PROJECT_ID=xxxx
+VITE_FIREBASE_STORAGE_BUCKET=xxxx.appspot.com
+VITE_FIREBASE_MESSAGING_SENDER_ID=xxxx
+VITE_FIREBASE_APP_ID=xxxx
+```
+
+### 4️⃣ Ejecutar el proyecto
+```bash
+npm run dev
+```
+
+Abrir en `http://localhost:5173/`
 
 ---
 
-## ✅ Cumplimiento de la actividad
-- Catálogo de productos ✅  
-- Carrito de compras ✅  
-- Gestión de pedidos (CRUD + transacciones) ✅  
-- Base de datos remota (Firestore) ✅  
-- Comportamiento consistente Android/iOS ✅  
+## 🖼 Vista previa
+
+### 📌 Catálogo de productos
+![Productos](./screenshots/productos.png)
+
+### 📌 Carrito de compras
+![Carrito](./screenshots/carrito.png)
+
+### 📌 Historial de pedidos
+![Pedidos](./screenshots/pedidos.png)
 
 ---
 
-## 📹 Entrega opcional
-- Graba un video corto mostrando el flujo: agregar productos, realizar pedido y consultar historial.
+## 📱 Multiplataforma
+La app funciona como **PWA** y puede empaquetarse con **Capacitor** para Android/iOS:
+
+```bash
+npx cap add android
+npx cap add ios
+npx cap sync
+```
 
 ---
 
-© 2025 - App de Gestión de Pedidos Online
+
