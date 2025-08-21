@@ -39,12 +39,13 @@ Aplicación híbrida multiplataforma para gestionar productos, carrito de compra
 ## 📂 Estructura de datos en Firestore
 - **products**:  
   ```json
-  {
-    "name": "Café Americano",
-    "description": "8 oz",
-    "price": 12.5,
-    "stock": 20
-  }
+{
+  "id": 1,
+  "nombre": "Monitor 4K",
+  "descripcion": "Monitor profesional 27 pulgadas con resolución 4K",
+  "precio": 449.99,
+  "categoria": "Electrónicos"
+}
   ```
 
 - **orders**:  
