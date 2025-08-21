@@ -91,28 +91,6 @@ Abrir en `http://localhost:5173/`
 
 ---
 
-## 🖼 Vista previa
 
-### 📌 Catálogo de productos
-![Productos](./screenshots/productos.png)
-
-### 📌 Carrito de compras
-![Carrito](./screenshots/carrito.png)
-
-### 📌 Historial de pedidos
-![Pedidos](./screenshots/pedidos.png)
-
----
-
-## 📱 Multiplataforma
-La app funciona como **PWA** y puede empaquetarse con **Capacitor** para Android/iOS:
-
-```bash
-npx cap add android
-npx cap add ios
-npx cap sync
-```
-
----
 
 
